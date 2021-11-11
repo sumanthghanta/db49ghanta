@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1= title
+  p Bottle results
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let mattress = [
+                    {
+                        "brand": "Tupperware",
+                        "bottlesModel": "Plastic",
+                        "Quantity": 500
+                    },
+                    {
+                        "brand": "Milton",
+                        "bottlesModel": "copper",
+                        "Quantity": 750
+                    },
+                    {
+                        "brand": "Signoraware",
+                        "bottleModel": "steel",
+                        "Quantity": 1000
+                    },                   
+                ]
+            each v,index in mattress
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.brand}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.bottlesModel}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.Quantity}
+
+                script.                
+                      function buy(intemNo)
+                      {
+                            alert(`you purchased Item ${intemNo+1}`)
+                      }
