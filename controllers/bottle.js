@@ -29,9 +29,25 @@ exports.bottle_detail = function(req, res) {
     res.send('NOT IMPLEMENTED: bottle detail: ' + req.params.id); 
 }; 
  
-// Handle bottle create on POST. 
-exports.bottle_create_post = function(req, res) { 
-    res.send('NOT IMPLEMENTED: bottle create POST'); 
+// Handle Costume create on POST. 
+exports.bottle_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new bottle(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    // {"costume_type":"goat", "cost":12, "size":"large"} 
+    document.brand = req.body.brand; 
+    document.bottlesModel = req.body.bottlesModel; 
+    document.Quantity = req.body.Quantity; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // Handle bottle delete form on DELETE. 
