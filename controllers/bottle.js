@@ -11,6 +11,18 @@ exports.bottle_list = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+// VIEWS 
+// Handle a show all view 
+exports.bottle_view_all_Page = async function(req, res) { 
+    try{ 
+        thebottle = await bottle.find(); 
+        res.render('bottle', { title: 'bottle Search Results', results: thebottle }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
  
 // for a specific bottle. 
 exports.bottle_detail = function(req, res) { 
