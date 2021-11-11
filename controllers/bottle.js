@@ -1,8 +1,15 @@
 var bottle = require('../models/bottle'); 
  
 // List of all bottle 
-exports.bottle_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: bottle list'); 
+exports.bottle_list = async function(req, res) { 
+    try{ 
+        thebottle = await bottle.find(); 
+        res.send(thebottle); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // for a specific bottle. 
