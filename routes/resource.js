@@ -19,8 +19,7 @@ router.post('/bottle', bottle_controller.bottle_create_post);
 router.delete('/bottle/:id', bottle_controller.bottle_delete); 
  
 // PUT request to update Costume. 
-router.put('/costumes/:id', 
-bottle_controller.bottle_update_put); 
+router.put('/bottle/:id', bottle_controller.bottle_update_put); 
  
 // GET request for one bottle. 
 router.get('/bottle/:id', bottle_controller.bottle_detail); 
