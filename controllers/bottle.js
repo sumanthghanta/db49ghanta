@@ -13,7 +13,7 @@ exports.bottle_list = async function(req, res) {
 }; 
 // VIEWS 
 // Handle a show all view 
-exports.bottle_view_all_Page = async function(req, res) { 
+exports.bottle_list = async function(req, res) { 
     try{ 
         thebottle = await bottle.find(); 
         res.render('bottle', { title: 'bottle Search Results', results: thebottle }); 
@@ -23,15 +23,15 @@ exports.bottle_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
- 
-// for a specific bottle. 
+
 // for a specific bottle. 
 exports.bottle_detail = async function(req, res) { 
     console.log("detail"  + req.params.id) 
     try { 
         result = await bottle.findById( req.params.id) 
         res.send(result) 
-    } catch (error) { 
+    } 
+    catch (error) { 
         res.status(500) 
         res.send(`{"error": document for id ${req.params.id} not found`); 
     } 
@@ -58,12 +58,19 @@ exports.bottle_create_post = async function(req, res) {
     }   
 }; 
  
-// Handle bottle delete form on DELETE. 
-exports.bottle_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: bottle delete DELETE ' + req.params.id); 
+// Handle bottle delete form on DELETE.  
+exports.bottle_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await bottle.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
- 
-// Handle bottle update form on PUT. 
+
 // Handle bottle update form on PUT. 
 exports.bottle_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
@@ -83,3 +90,5 @@ ${JSON.stringify(req.body)}`)
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`); 
     } 
 }; 
+
+

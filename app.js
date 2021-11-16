@@ -34,8 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 async function recreateDB() {
   // Delete everything
   await bottleSchema.deleteMany();
-  let instance1 = new bottleSchema({
-    brand: "Tupperware",
+  let instance1 = new bottleSchema({brand: "Tupperware",
     bottlesModel: "Plastic",
     Quantity: 500
   });

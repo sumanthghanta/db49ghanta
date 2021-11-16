@@ -10,15 +10,15 @@ var bottle_controller = require('../controllers/bottle');
 // GET resources base. 
 router.get('/', api_controller.api); 
  
-/// COSTUME ROUTES /// 
+/// bottle ROUTES /// 
  
-// POST request for creating a Costume.  
+// POST request for creating a bottle.  
 router.post('/bottle', bottle_controller.bottle_create_post); 
  
-// DELETE request to delete Costume. 
+// DELETE request to delete bottle. 
 router.delete('/bottle/:id', bottle_controller.bottle_delete); 
  
-// PUT request to update Costume. 
+// PUT request to update bottle. 
 router.put('/bottle/:id', bottle_controller.bottle_update_put); 
  
 // GET request for one bottle. 
@@ -26,5 +26,8 @@ router.get('/bottle/:id', bottle_controller.bottle_detail);
  
 // GET request for list of all bottle items. 
 router.get('/bottle', bottle_controller.bottle_list);
+
+/* GET detail bottle page */ 
+router.get('/detail', bottle_controlers.bottle_view_one_Page);
  
 module.exports = router; 
