@@ -1,28 +1,22 @@
-extends layout
-
-block content
-  h1(id="titlestyle")= title
-
-  if (toShow == null)
-    h2 No instance to delete
-  else
-    - let bottleid = toShow._id
-    - let brand = toShow.brand
-    - let bottlesModel  = toShow.bottlesModel
-    - let Quantity  = toShow.Quantity
-
-    div
-      div.row
-        div(class='costumeAttr mr-3') bottle ID is:
-        div(class='variety stylesheetnew') #{bottleid}
-
-      div.row
-        div(class='costumeAttr mr-3') bottle brand is:
-        div(class="variety") #{brand}
-      div.row
-        div(class='costumeAttr mr-3') bottle bottlesModel is:
-        div(class="variety") #{bottlesModel}
-      div.row
-        div(class='costumeAttr mr-3') bottle Quantity is:
-        div(class="variety") #{Quantity}
-    
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let bottleid = toShow._id 
+  - let brand = toShow.brand 
+  - let bottlesModel  = toShow.bottlesModel  
+  - let Quantity = toShow.Quantity 
+  div 
+    div.row 
+      div(class='bottleAttr mr-3') bottle ID\ is: 
+      div #{bottleid} 
+    div.row 
+      div(class='bottleAttr mr-3') brand is: 
+      div #{brand} 
+    div.row 
+      div(class='bottleAttr mr-3') bottlesModel is: 
+      div #{bottlesModel} 
+    div.row 
+      div(class='bottleAttr mr-3') Quantity is: 
+      div #{Quantity} 
