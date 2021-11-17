@@ -1,22 +1,21 @@
-extends layout 
- 
-block content 
-  h1= title 
- 
-  - let bottleid = toShow._id 
-  - let brand = toShow.brand 
-  - let bottlesModel  = toShow.bottlesModel  
-  - let Quantity = toShow.Quantity 
-  div 
-    div.row 
-      div(class='bottleAttr mr-3') bottle ID\ is: 
-      div #{bottleid} 
-    div.row 
-      div(class='bottleAttr mr-3') brand is: 
-      div #{brand} 
-    div.row 
-      div(class='bottleAttr mr-3') bottlesModel is: 
-      div #{bottlesModel} 
-    div.row 
-      div(class='bottleAttr mr-3') Quantity is: 
-      div #{Quantity} 
+extends layout
+
+block content
+  h1= title
+    - let bottleid = toShow._id   
+    - let brand  = toShow.brand
+    - let bottlesModel = toShow.bottlesModel
+    - let Quantity = toShow.Quantity 
+    div
+      div.row
+        div(class='bottleAttr mr-3') bottle ID is:
+        div #{bottleid}
+      div.row
+        div(class='bottleAttr mr-3') brand is:
+        div #{brand}
+      div.row
+        div(class='bottleAttr mr-3') bottlesModel is:
+        div #{bottlesModel}
+      div.row
+        div(class='bottleAttr mr-3') Quantity is:
+        div #{Quantity}
