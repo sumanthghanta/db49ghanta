@@ -1,9 +1,9 @@
-var bottle = require('../models/bottle'); 
+var Bottle = require('../models/bottle'); 
  
 // List of all bottle 
 exports.bottle_list = async function(req, res) { 
     try{ 
-        thebottle = await bottle.find(); 
+        thebottle = await Bottle.find(); 
         res.send(thebottle); 
     } 
     catch(err){ 
@@ -13,7 +13,7 @@ exports.bottle_list = async function(req, res) {
 }; 
 exports.bottle_view_all_Page = async function (req, res) {
     try {
-        thebottle = await bottle.find();
+        let thebottle = await Bottle.find();
         res.render('bottle', { title: 'bottle Search Results', results: thebottle });
     }
     catch (err) {
@@ -26,8 +26,7 @@ exports.bottle_view_all_Page = async function (req, res) {
 exports.bottle_detail = async function(req, res) {
     console.log("detail" + req.params.id)
     try {
-
-        result = await bottle.findById( req.params.id)
+        result = await Bottle.findById( req.params.id)
         res.send(result)
     } 
     catch (error) {
@@ -41,7 +40,7 @@ exports.bottle_detail = async function(req, res) {
 // Handle bottle create on POST. 
 exports.bottle_create_post = async function(req, res) { 
     console.log(req.body) 
-    let document = new bottle(); 
+    let document = new Bottle(); 
     document.brand = req.body.brand; 
     document.bottlesModel = req.body.bottlesModel; 
     document.Quantity = req.body.Quantity; 
@@ -59,7 +58,7 @@ exports.bottle_create_post = async function(req, res) {
 exports.bottle_delete = async function(req, res) { 
     console.log("delete "  + req.params.id) 
     try { 
-        result = await bottle.findByIdAndDelete( req.params.id) 
+        result = await Bottle.findByIdAndDelete( req.params.id) 
         console.log("Removed " + result) 
         res.send(result) 
     } catch (err) { 
@@ -73,7 +72,7 @@ exports.bottle_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body 
 ${JSON.stringify(req.body)}`) 
     try { 
-        let toUpdate = await bottle.findById( req.params.id) 
+        let toUpdate = await Bottle.findById( req.params.id) 
         // Do updates of properties 
         if(req.body.brand)  toUpdate.brand = req.body.brand; 
         if(req.body.bottlesModel) toUpdate.bottlesModel = req.body.bottlesModel; 
@@ -92,7 +91,7 @@ ${JSON.stringify(req.body)}`)
 exports.bottle_view_one_Page = async function(req, res) {
     console.log("single view for id "  + req.query.id)
     try{
-        result = await bottle.findById( req.query.id)
+        result = await Bottle.findById( req.query.id)
         res.render('bottledetail', {
             title: 'bottle Detail', 
             toShow: result
@@ -123,8 +122,22 @@ exports.bottle_create_Page =  function(req, res) {
 exports.bottle_update_Page =  async function(req, res) { 
     console.log("update view for item "+req.query.id) 
     try{ 
-        let result = await bottle.findById(req.query.id) 
+        let result = await Bottle.findById(req.query.id) 
         res.render('bottleupdate', { title: 'bottle Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle a delete one view with id from query 
+exports.bottle_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await Bottle.findById(req.query.id) 
+        res.render('bottledelete', { title: 'bottle Delete', toShow: 
+result }); 
     } 
     catch(err){ 
         res.status(500) 

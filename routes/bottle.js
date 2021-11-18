@@ -19,7 +19,10 @@ router.get('/detail', bottle_controlers.bottle_view_one_Page);
 /* GET create bottle page */ 
 router.get('/create', bottle_controlers.bottle_create_Page);
 
-/* GET create bottle page */ 
+/* GET update bottle page */ 
 router.get('/update', bottle_controlers.bottle_update_Page);
+
+/* GET delete bottle page */ 
+router.get('/delete', bottle_controlers.bottle_delete_Page);
 
 module.exports = router;

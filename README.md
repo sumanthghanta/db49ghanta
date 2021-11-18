@@ -4,7 +4,7 @@ Positivity always wins.
 
 Class name : bottle
 
-Attributes : brand , bottlesModel, Quantity
+Attributes : brand(text) , bottlesModel(text) , Quantity(number)
 
 [Hosted at](https://fwb49ghanta.herokuapp.com/)
 

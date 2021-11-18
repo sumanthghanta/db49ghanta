@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bottleSchema = require("./models/bottle");
+
 
 const connectionString =
   process.env.MONGO_CON
@@ -18,8 +18,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bottleRouter = require('./routes/bottle');
 var addmodsRouter = require('./routes/addmods');
-var selectorRouter = require('./routes/selector')
-var resourceRouter = require('./routes/resource')
+var selectorRouter = require('./routes/selector');
+var bottleSchema = require('./models/bottle');
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 // view engine setup
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 async function recreateDB() {
   // Delete everything
   await bottleSchema.deleteMany();
