@@ -1,18 +1,23 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"bottle/create\")`
   h1= title
-  p Welcome to the bottle pug
-  div(class="container-fluid")
-        div(class="row")
-            -
-                let bottle = results
-            each b,index in bottle
-                div(class="col-sm-2" onclick=`buy(${index})`) #{b.brand}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{b.bottlesModel}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{b.Quantity}
-  script.                
-        function buy(intemNo)
-        {
-              alert(`you purchased Item ${intemNo+1}`)
-        }
+  - let bottle =results;
+  div(class="container-fluid mt-3")
+   div(class="row m-1")
+    each element in bottle 
+     - let destination=`buy(\"/bottle/update?id=${element._id}\")`
+     - let detail=`buy(\"/bottle/detail?id=${element._id}\")`
+     - let del=`buy(\"/bottle/delete?id=${element._id}\")`
+     div(class="col-sm-6 bg-secondary m-1 p-3") bottle  #{element.brand} - #{element.bottlesModel} - #{element.Quantity}
+      button.btn( class="btn-info ml-2", onclick=destination ) Update
+   
+  
+   script.
+    function buy(path){
+        window.location.href=path
+
+        //alert(`You purchased Item ${a+1}`)
+      }
+  
