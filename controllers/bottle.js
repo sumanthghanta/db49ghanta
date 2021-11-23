@@ -80,8 +80,7 @@ ${JSON.stringify(req.body)}`)
         let result = await toUpdate.save(); 
         console.log("Sucess " + result) 
         res.send(result) 
-    } 
-        catch (err) { 
+    } catch (err) { 
         res.status(500) 
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`); 
     } 
