@@ -24,12 +24,12 @@ const secured = (req, res, next) => {
 }
 
 /* GET create bottle page */ 
-router.get('/create', bottle_controlers.bottle_create_Page);
+router.get('/create',secured, bottle_controlers.bottle_create_Page);
 
 /* GET update bottle page */ 
 router.get('/update',secured, bottle_controlers.bottle_update_Page);
 
 /* GET delete bottle page */ 
-router.get('/delete', bottle_controlers.bottle_delete_Page);
+router.get('/delete',secured, bottle_controlers.bottle_delete_Page);
 
 module.exports = router;

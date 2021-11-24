@@ -1,8 +1,18 @@
 const mongoose = require("mongoose")
 const bottleSchema = mongoose.Schema({
-    brand: String,
+    brand:{
+        type: String,
+        minLength: 3,
+        maxLength: 50
+    },
+    
     bottlesModel: String,
-    Quantity: Number
-})
+    
+    Quantity: {
+        type:Number,
+        min:1,
+        max:2000
+    }
+    })
 module.exports = mongoose.model("bottle",
     bottleSchema)
