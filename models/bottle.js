@@ -11,7 +11,7 @@ const bottleSchema = mongoose.Schema({
     Quantity: {
         type:Number,
         min:1,
-        max:2000
+        max:1000
     }
     })
 module.exports = mongoose.model("bottle",
